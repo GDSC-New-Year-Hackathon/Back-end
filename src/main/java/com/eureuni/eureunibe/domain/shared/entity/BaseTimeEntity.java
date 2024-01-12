@@ -1,4 +1,4 @@
-package com.eureuni.eureunibe.domain.domain;
+package com.eureuni.eureunibe.domain.shared.entity;
 
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.MappedSuperclass;
