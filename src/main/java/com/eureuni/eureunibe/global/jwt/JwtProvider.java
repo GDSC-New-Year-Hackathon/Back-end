@@ -62,4 +62,10 @@ public class JwtProvider {
             return e.getClaims();
         }
     }
+
+    public UUID getUserIdFromToken(String token) {
+        System.out.println(token);
+        Claims claims = parseClaims(token, false);
+        return UUID.fromString(claims.get("id").toString());
+    }
 }
