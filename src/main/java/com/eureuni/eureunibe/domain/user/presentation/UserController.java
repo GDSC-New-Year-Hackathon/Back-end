@@ -30,7 +30,7 @@ public class UserController {
 
     @PostMapping(value = "/register")
     public ResponseEntity<Map<String, String>> register(@RequestBody SignupRequest signupRequest) throws Exception {
-        JwtResponse jwt = userSignup.execute(signupRequest.getEmail(), signupRequest.getPassword(), signupRequest.getNickname());
+        JwtResponse jwt = userSignup.execute(signupRequest.getEmail(), signupRequest.getPassword(), signupRequest.getNickname(), signupRequest.getGender());
         return new ResponseEntity<>(Map.of("message", "회원가입이 성공했습니다."), HttpStatus.OK);
     }
 }
