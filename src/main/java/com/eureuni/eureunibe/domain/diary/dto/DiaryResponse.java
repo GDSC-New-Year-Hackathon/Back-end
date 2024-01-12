@@ -17,4 +17,14 @@ public class DiaryResponse {
     String title;
 
     String content;
+
+
+    @Builder
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class getDiaryResponse {
+        String title;
+        String content;
+    }
 }

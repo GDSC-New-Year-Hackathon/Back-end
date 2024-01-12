@@ -27,7 +27,7 @@ public class DiaryServiceImpl implements DiaryService {
                 .content(request.getContent())
                 .build();
 
-        diary.setUserId(userRepository.findByUserId(userId).get());
+        diary.setUserId(userRepository.findById(userId).get());
 
         return diaryRepository.save(diary);
 
@@ -37,4 +37,7 @@ public class DiaryServiceImpl implements DiaryService {
         return diaryRepository.findAll();
     }
 
+    public Optional<Diary> getDiary(Long diaryId) {
+        return diaryRepository.findById(diaryId);
+    }
 }

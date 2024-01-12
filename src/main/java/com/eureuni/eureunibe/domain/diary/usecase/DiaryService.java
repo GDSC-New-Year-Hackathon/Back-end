@@ -10,5 +10,5 @@ public interface DiaryService {
 
     Diary createDiary(DiaryRequest request, Long userId);
     List<Diary> getAllDiary();
-
+    Optional<Diary> getDiary(Long diaryId);
 }
