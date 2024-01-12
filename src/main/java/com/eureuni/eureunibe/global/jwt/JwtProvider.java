@@ -10,7 +10,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
-import java.security.SignatureException;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -27,7 +26,7 @@ public class JwtProvider {
     @Value("${jwt.refresh_secret}")
     private String refreshSecret;
 
-    public String generateToken(UUID id, String email, boolean isRefreshToken) {
+    public String generateToken(Long id, String email, boolean isRefreshToken) {
         Instant accessDate = LocalDateTime.now().plusHours(4).atZone(ZoneId.systemDefault()).toInstant();
         Instant refreshDate = LocalDateTime.now().plusDays(30).atZone(ZoneId.systemDefault()).toInstant();
         return Jwts.builder()
