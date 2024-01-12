@@ -28,6 +28,12 @@ public class JwtProvider {
     private String refreshSecret;
 
 
+    public Authentication getAuthentication(String token) {
+        Claims claims = parseClaims(token, false);
+        Collection<? extends GrantedAuthority> authorities = Collections.singletonList(new SimpleGrantedAuthority(claims.get("role").toString()));
+        return new UsernamePasswordAuthenticationToken(null, authorities);
+    }
+
     public void validateToken(String token, boolean isRefreshToken) {
         try {
             parseClaims(token, isRefreshToken);
