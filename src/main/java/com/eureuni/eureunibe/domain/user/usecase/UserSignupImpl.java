@@ -1,5 +1,6 @@
 package com.eureuni.eureunibe.domain.user.usecase;
 
+import com.eureuni.eureunibe.domain.user.domain.Gender;
 import com.eureuni.eureunibe.domain.user.domain.User;
 import com.eureuni.eureunibe.domain.user.exception.EmailDuplicateException;
 import com.eureuni.eureunibe.domain.user.exception.PasswordInvalidException;
@@ -20,7 +21,7 @@ public class UserSignupImpl implements UserSignup {
 
     @Transactional
     @Override
-    public JwtResponse execute(String email, String password, String nickname) throws EmailDuplicateException, PasswordInvalidException {
+    public JwtResponse execute(String email, String password, String nickname, Gender gender) throws EmailDuplicateException, PasswordInvalidException {
         if (userRepository.existsByEmail(email)) {
             throw new EmailDuplicateException();
         }
@@ -28,6 +29,7 @@ public class UserSignupImpl implements UserSignup {
         User user = User.builder()
                 .email(email)
                 .nickname(nickname)
+                .gender(gender)
                 .password(passwordEncoder.encode(password))
                 .build();
 
