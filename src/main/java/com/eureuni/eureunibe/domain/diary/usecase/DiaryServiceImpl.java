@@ -2,13 +2,14 @@ package com.eureuni.eureunibe.domain.diary.usecase;
 
 import com.eureuni.eureunibe.domain.diary.domain.Diary;
 import com.eureuni.eureunibe.domain.diary.dto.DiaryRequest;
-import com.eureuni.eureunibe.domain.diary.dto.DiaryResponse;
 import com.eureuni.eureunibe.domain.diary.repository.DiaryRepository;
-import com.eureuni.eureunibe.domain.user.domain.User;
 import com.eureuni.eureunibe.domain.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional(readOnly = true)
@@ -30,6 +31,10 @@ public class DiaryServiceImpl implements DiaryService {
 
         return diaryRepository.save(diary);
 
-
     }
+
+    public List<Diary> getAllDiary() {
+        return diaryRepository.findAll();
+    }
+
 }
